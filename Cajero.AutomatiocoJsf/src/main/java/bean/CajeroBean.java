@@ -17,18 +17,12 @@ public class CajeroBean implements Serializable {
 
     private CajeroService service = new CajeroService();
 
-    // acciones JSF
+    //las acciones mire compñaeroo
     public void depositar() {
         mensaje = service.depositar(cuenta, pin, monto);
     }
 
-    public void retirar() {
-        mensaje = service.retirar(cuenta, pin, monto);
-    }
-
-    public void consultarSaldo() {
-        mensaje = service.consultarSaldo(cuenta, pin);
-    }
+  
 
     // getters y setters
     public String getCuenta() { return cuenta; }

@@ -16,7 +16,7 @@ public class CajeroService {
         cargarClientes();
     }
 
-    // 📥 Leer CSV
+   
     private void cargarClientes() {
         try {
             InputStream is = getClass().getClassLoader().getResourceAsStream("clientes.csv");
@@ -37,7 +37,7 @@ public class CajeroService {
         }
     }
 
-    // 🔎 Buscar cliente
+    // compañero aqui buscaremos los clientes mire
     public Cliente buscarCliente(String cuenta, String pin) {
         for (Cliente c : clientes) {
             if (c.getCuenta().equals(cuenta) && c.getPin().equals(pin)) {
@@ -47,7 +47,7 @@ public class CajeroService {
         return null;
     }
 
-    // 💰 Depósito
+    // Hola mire segun aqui vamos a depositar revicelo
     public String depositar(String cuenta, String pin, double monto) {
         if (monto <= 0) {
             return "Monto inválido";
@@ -62,31 +62,5 @@ public class CajeroService {
         return "Depósito exitoso. Nuevo saldo: " + c.getSaldo();
     }
 
-    // 🏧 Retiro
-    public String retirar(String cuenta, String pin, double monto) {
-        if (monto <= 0) {
-            return "Monto inválido";
-        }
 
-        Cliente c = buscarCliente(cuenta, pin);
-        if (c == null) {
-            return "PIN o cuenta incorrectos";
-        }
-
-        if (c.getSaldo() < monto) {
-            return "Saldo insuficiente";
-        }
-
-        c.setSaldo(c.getSaldo() - monto);
-        return "Retiro exitoso. Nuevo saldo: " + c.getSaldo();
-    }
-
-    // 📊 Consulta saldo
-    public String consultarSaldo(String cuenta, String pin) {
-        Cliente c = buscarCliente(cuenta, pin);
-        if (c == null) {
-            return "PIN o cuenta incorrectos";
-        }
-        return "Saldo actual: " + c.getSaldo();
-    }
-}
+ }
