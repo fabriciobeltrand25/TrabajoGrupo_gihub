@@ -1,6 +1,6 @@
 package service;
 
-import cajero.Cliente;
+import cajero.cliente;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class CajeroService {
 
-    private List<Cliente> clientes = new ArrayList<>();
+    private List<cliente> clientes = new ArrayList<>();
 
     public CajeroService() {
         cargarClientes();
@@ -29,7 +29,7 @@ public class CajeroService {
                 String pin = datos[1];
                 double saldo = Double.parseDouble(datos[2]);
 
-                clientes.add(new Cliente(cuenta, pin, saldo));
+                clientes.add(new cliente(cuenta, pin, saldo));
             }
 
         } catch (Exception e) {
@@ -38,8 +38,8 @@ public class CajeroService {
     }
 
     // compañero aqui buscaremos los clientes mire
-    public Cliente buscarCliente(String cuenta, String pin) {
-        for (Cliente c : clientes) {
+    public cliente buscarCliente(String cuenta, String pin) {
+        for (cliente c : clientes) {
             if (c.getCuenta().equals(cuenta) && c.getPin().equals(pin)) {
                 return c;
             }
@@ -53,7 +53,7 @@ public class CajeroService {
             return "Monto inválido";
         }
 
-        Cliente c = buscarCliente(cuenta, pin);
+        cliente c = buscarCliente(cuenta, pin);
         if (c == null) {
             return "PIN o cuenta incorrectos";
         }

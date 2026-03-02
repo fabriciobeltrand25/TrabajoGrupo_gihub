@@ -1,14 +1,14 @@
 package cajero;
 
-public class Cliente {
+public class cliente{
 
     private String cuenta;
     private String pin;
     private double saldo;
 
-    public Cliente() {}
+    public cliente() {}
 
-    public Cliente(String cuenta, String pin, double saldo) {
+    public cliente(String cuenta, String pin, double saldo) {
         this.cuenta = cuenta;
         this.pin = pin;
         this.saldo = saldo;
