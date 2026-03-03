@@ -19,7 +19,7 @@ public class CajeroService {
     // 📥 Leer CSV
     private void cargarClientes() {
         try {
-            InputStream is = getClass().getClassLoader().getResourceAsStream("clientes.csv");
+            InputStream is = getClass().getClassLoader().getResourceAsStream("clientes.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String linea;
 
