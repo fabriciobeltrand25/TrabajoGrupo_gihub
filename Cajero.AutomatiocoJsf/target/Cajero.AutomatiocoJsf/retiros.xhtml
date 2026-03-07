@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+      
+ <h:head>
+    <title>Retiros</title>
+    <h:outputStylesheet library="css" name="styles.css"/>
+</h:head>
+
+<h:body>
+<div class="container">
+    <h2>Retiro</h2>
+
+    <h:form>
+        <h:panelGrid columns="2">
+            Cuenta: <h:inputText value="#{cajeroBean.cuenta}" />
+            PIN: <h:inputSecret value="#{cajeroBean.pin}" />
+            Monto: <h:inputText value="#{cajeroBean.monto}" />
+        </h:panelGrid>
+        <br/>
+        
+        
+         <h:commandButton value="Retirar" action="#{cajeroBean.retirar}">
+                 <f:setPropertyActionListener target="#{cajeroBean.mensaje}" value="" />
+          </h:commandButton>
+                                   
+        <br/><br/>
+        <h:outputText value="#{cajeroBean.mensaje}" style="color: red;" />
+        <br/><br/>
+        
+        <h:commandButton value="Volver al menú" action="index?faces-redirect=true"/>
+    </h:form>
+</div>
+</h:body>
+</html>

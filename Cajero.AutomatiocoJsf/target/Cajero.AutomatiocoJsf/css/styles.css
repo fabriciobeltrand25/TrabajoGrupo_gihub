@@ -1,0 +1,53 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #ecf0f1;
+    display: flex; /* Centrado moderno */
+    justify-content: center;
+}
+
+.container {
+    width: 400px;
+    margin-top: 100px;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+/* Cambiamos 'input' por selectores que JSF reconoce mejor */
+input[type="text"], 
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;      /* Espacio arriba del texto */
+    margin-bottom: 15px;   /* Espacio debajo para que no se pegue al siguiente */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Evita que el input se salga del contenedor */
+}
+
+/* JSF renderiza los botones como input type="submit" */
+input[type="submit"] {
+    background: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;           /* Botón a lo ancho para que se vea moderno */
+    font-size: 16px;
+    transition: background 0.3s;
+    margin-bottom: 10px;   /* Separación entre botones */
+}
+
+input[type="submit"]:hover {
+    background: #2980b9;
+}
+
+.mensaje {
+    display: block;        /* Para que respete márgenes */
+    margin-top: 20px;
+    font-weight: bold;
+    color: #27ae60;
+    text-align: center;
+}

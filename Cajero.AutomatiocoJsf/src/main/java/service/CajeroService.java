@@ -1,12 +1,8 @@
 package service;
 
 import cajero.Cliente;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 public class CajeroService {
 
@@ -16,59 +12,72 @@ public class CajeroService {
         cargarClientes();
     }
 
-    // 📥 Leer CSV
     private void cargarClientes() {
+
         try {
+
             InputStream is = getClass().getClassLoader().getResourceAsStream("clientes.txt");
+
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
             String linea;
 
             while ((linea = br.readLine()) != null) {
-                String[] datos = linea.split(",");
-                String cuenta = datos[0];
-                String pin = datos[1];
-                double saldo = Double.parseDouble(datos[2]);
 
-                clientes.add(new Cliente(cuenta, pin, saldo));
+                String[] datos = linea.split(",");
+
+                clientes.add(
+                        new Cliente(
+                                datos[0],
+                                datos[1],
+                                Double.parseDouble(datos[2])
+                        )
+                );
+
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
-    // 🔎 Buscar cliente
-    public Cliente buscarCliente(String cuenta, String pin) {
+    private Cliente buscarCliente(String cuenta, String pin) {
+
         for (Cliente c : clientes) {
+
             if (c.getCuenta().equals(cuenta) && c.getPin().equals(pin)) {
                 return c;
             }
+
         }
+
         return null;
+
     }
 
-    // 💰 Depósito
     public String depositar(String cuenta, String pin, double monto) {
+
         if (monto <= 0) {
             return "Monto inválido";
         }
 
         Cliente c = buscarCliente(cuenta, pin);
+
         if (c == null) {
             return "PIN o cuenta incorrectos";
         }
 
         c.setSaldo(c.getSaldo() + monto);
+
         return "Depósito exitoso. Nuevo saldo: " + c.getSaldo();
+
     }
 
-    // 🏧 Retiro
     public String retirar(String cuenta, String pin, double monto) {
-        if (monto <= 0) {
-            return "Monto inválido";
-        }
 
         Cliente c = buscarCliente(cuenta, pin);
+
         if (c == null) {
             return "PIN o cuenta incorrectos";
         }
@@ -78,15 +87,21 @@ public class CajeroService {
         }
 
         c.setSaldo(c.getSaldo() - monto);
+
         return "Retiro exitoso. Nuevo saldo: " + c.getSaldo();
+
     }
 
-    // 📊 Consulta saldo
     public String consultarSaldo(String cuenta, String pin) {
+
         Cliente c = buscarCliente(cuenta, pin);
+
         if (c == null) {
-            return "PIN o cuenta incorrectos";
+            return "PIN incorrecto o cuenta inválida";
         }
-        return "Saldo actual: " + c.getSaldo();
+
+        return "Tu saldo actual es: " + c.getSaldo();
+
     }
+
 }

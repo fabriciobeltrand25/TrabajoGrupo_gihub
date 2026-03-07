@@ -1,6 +1,6 @@
 package cajero;
 
-public class Cliente{
+public class Cliente {
 
     private String cuenta;
     private String pin;

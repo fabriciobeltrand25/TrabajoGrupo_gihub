@@ -6,7 +6,7 @@ import service.CajeroService;
 
 import java.io.Serializable;
 
-@Named("cajeroBean")
+@Named
 @SessionScoped
 public class CajeroBean implements Serializable {
 
@@ -17,28 +17,58 @@ public class CajeroBean implements Serializable {
 
     private CajeroService service = new CajeroService();
 
-    // acciones JSF
     public void depositar() {
+
         mensaje = service.depositar(cuenta, pin, monto);
+
     }
 
     public void retirar() {
+
         mensaje = service.retirar(cuenta, pin, monto);
+
     }
 
     public void consultarSaldo() {
+
         mensaje = service.consultarSaldo(cuenta, pin);
+
     }
 
-    // getters y setters
-    public String getCuenta() { return cuenta; }
-    public void setCuenta(String cuenta) { this.cuenta = cuenta; }
+    public String getCuenta() {
+        return cuenta;
+    }
 
-    public String getPin() { return pin; }
-    public void setPin(String pin) { this.pin = pin; }
+    public void setCuenta(String cuenta) {
+        this.cuenta = cuenta;
+    }
 
-    public double getMonto() { return monto; }
-    public void setMonto(double monto) { this.monto = monto; }
+    public String getPin() {
+        return pin;
+    }
 
-    public String getMensaje() { return mensaje; }
+    public void setPin(String pin) {
+        this.pin = pin;
+    }
+
+    public double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(double monto) {
+        this.monto = monto;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+    
+    public String irAlMenu() {
+        this.mensaje = "";
+        this.monto = 0;
+         this.cuenta = "";
+         this.pin = "";
+        return "index?faces-redirect=true";
+    }
+
 }

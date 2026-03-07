@@ -1,26 +1,47 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="jakarta.faces.html">
+xmlns:h="jakarta.faces.html"
+xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <title>Depósitos</title>
-</h:head>
+<title>Depósito</title>
 
-<h:body>
-<h2>Depósito</h2>
+</h:head>
+<h:body style="display:flex;justify-content:center;padding-top:80px;">
+
 
 <h:form>
-    Cuenta: <h:inputText value="#{cajeroBean.cuenta}" /><br/>
-    PIN: <h:inputSecret value="#{cajeroBean.pin}" /><br/>
-    Monto: <h:inputText value="#{cajeroBean.monto}" /><br/><br/>
 
-    <h:commandButton value="Depositar" action="#{cajeroBean.depositar}"/>
+<p:panel header="Depósito de Efectivo" style="width:400px">
+<p:messages autoUpdate="true"/>
+<h:panelGrid columns="1" style="width:100%">
 
-    <br/><br/>
-    <h:outputText value="#{cajeroBean.mensaje}" />
+<p:outputLabel value="Ingresa tu Cuenta"/>
+<p:inputText value="#{cajeroBean.cuenta}"  required="true" style="width:100%"/>
 
-    <br/><br/>
-    <h:commandButton value="Volver al menú" action="index.xhtml"/>
+<p:outputLabel value="Ingrese su PIN"/>
+<p:password value="#{cajeroBean.pin}"  required="true" style="width:100%"/>
+
+<p:outputLabel value="Monto a Retirar"/>
+<p:inputNumber value="#{cajeroBean.monto}" symbol="$ " decimalPlaces="2" style="width:100%"/>
+</h:panelGrid>
+
+<p:commandButton value="Depositar"
+action="#{cajeroBean.depositar}"
+update="@form"
+icon="pi pi-check"
+style="width:100%;margin-top:10px"/>
+
+<p:commandButton value="Volver al menú" 
+    action="#{cajeroBean.irAlMenu}" 
+    immediate="true"
+    styleClass="ui-button-secondary"
+    style="width:100%;margin-top:10px"/>
+
+<h:outputText value="#{cajeroBean.mensaje}" style="font-weight:bold"/>
+
+</p:panel>
+
 </h:form>
 
 </h:body>

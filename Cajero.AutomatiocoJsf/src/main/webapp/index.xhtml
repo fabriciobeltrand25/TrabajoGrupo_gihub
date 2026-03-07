@@ -1,21 +1,37 @@
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="jakarta.faces.html">
+xmlns:h="jakarta.faces.html"
+xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <title>Menú Cajero</title>
+<title>Cajero Automático</title>
 </h:head>
 
-<h:body>
-    <h2>Cajero Automático</h2>
+<h:body style="display:flex;justify-content:center;padding-top:80px;">
 
-    <h:form>
-        <h:commandButton value="Depósitos" action="depositos.xhtml"/>
-        <br/><br/>
-        <h:commandButton value="Retiros" action="retiros.xhtml"/>
-        <br/><br/>
-        <h:commandButton value="Consultar Saldo" action="saldo.xhtml"/>
-    </h:form>
+<h:form>
+
+<p:panel header="Cajero Automático" style="width:350px">
+
+<p:commandButton value="Depositar"
+  action="depositos?faces-redirect=true"
+  icon="pi pi-plus"
+  style="width:100%;margin-bottom:10px"/>
+
+<p:commandButton value="Retirar"
+  action="retiros?faces-redirect=true"
+  icon="pi pi-minus"
+  style="width:100%;margin-bottom:10px"/>
+
+<p:commandButton value="Consultar saldo"
+  action="saldo?faces-redirect=true"
+  icon="pi pi-wallet"
+  style="width:100%"/>
+
+</p:panel>
+
+</h:form>
 
 </h:body>
 </html>

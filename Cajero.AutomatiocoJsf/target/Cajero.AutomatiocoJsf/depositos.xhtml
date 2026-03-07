@@ -3,25 +3,47 @@
       xmlns:h="jakarta.faces.html">
 
 <h:head>
-    <title>Depósitos</title>
+    <title>Depósito</title>
+    <h:outputStylesheet library="css" name="styles.css"/>
 </h:head>
 
 <h:body>
-<h2>Depósito</h2>
+    <div class="container">
+        <h2>Depósito</h2>
 
-<h:form>
-    Cuenta: <h:inputText value="#{cajeroBean.cuenta}" /><br/>
-    PIN: <h:inputSecret value="#{cajeroBean.pin}" /><br/>
-    Monto: <h:inputText value="#{cajeroBean.monto}" /><br/><br/>
+        <h:form>
+            <h:messages style="color:red; list-style-type: none; padding: 0;" />
 
-    <h:commandButton value="Depositar" action="#{cajeroBean.depositar}"/>
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputLabel value="Cuenta:" for="cuenta" />
+                <h:inputText id="cuenta" value="#{cajeroBean.cuenta}" 
+                             required="true" requiredMessage="Ingrese la cuenta"/>
 
-    <br/><br/>
-    <h:outputText value="#{cajeroBean.mensaje}" />
+                <h:outputLabel value="PIN:" for="pin" />
+                <h:inputSecret id="pin" value="#{cajeroBean.pin}" 
+                               required="true" requiredMessage="Ingrese el PIN"/>
 
-    <br/><br/>
-    <h:commandButton value="Volver al menú" action="index.xhtml"/>
-</h:form>
+                <h:outputLabel value="Monto:" for="monto" />
+                <h:inputText id="monto" value="#{cajeroBean.monto}" 
+                             required="true" requiredMessage="Ingrese el monto"/>
+            </h:panelGrid>
 
+            <div style="margin-top: 20px;">
+                <h:commandButton value="Depositar" 
+                                 action="#{cajeroBean.depositar}" 
+                                 styleClass="btn-principal"/>
+                
+                <br/><br/>
+                
+                <h:outputText value="#{cajeroBean.mensaje}" styleClass="mensaje"/>
+                
+                <br/><br/>
+                
+                <h:commandButton value="Volver al menú" 
+                                 action="index?faces-redirect=true" 
+                                 immediate="true" />
+            </div>
+        </h:form>
+    </div>
 </h:body>
 </html>
